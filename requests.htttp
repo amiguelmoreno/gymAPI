@@ -2,9 +2,9 @@ POST http://localhost:3000/users HTTP/1.1
 Content-Type: application/json
 
 {
-   "username": "matiaste",
-   "displayName": "manu0t",
-   "password": "hello1"
+   "username": "teasd",
+   "displayName": "tera",
+   "password": "teras"
 }
 
 ###

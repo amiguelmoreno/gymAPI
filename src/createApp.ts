@@ -11,7 +11,7 @@ import "./strategies/localStrategy";
 export function createApp() {
   const app = express();
   app.use(express.json());
-  app.use(cookieParser());
+  app.use(cookieParser("helloworld"));
   app.use(
     session({
       secret: "anson the dev",

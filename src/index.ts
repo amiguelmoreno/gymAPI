@@ -1,11 +1,4 @@
-import express, { Request, Response, response } from "express";
 import mongoose from "mongoose";
-import dotenv from "dotenv";
-import routes from "./routes/index";
-import cookieParser from "cookie-parser";
-import session from "express-session";
-import MongoStore from "connect-mongo";
-import passport from "passport";
 import "./strategies/localStrategy";
 import { createApp } from "./createApp";
 
