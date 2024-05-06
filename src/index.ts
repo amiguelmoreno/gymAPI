@@ -1,20 +1,11 @@
 import express, { Request, Response } from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-
-dotenv.config();
-
-const app = express();
-const port = process.env.PORT || 3000;
-
-const mongoUrl = process.env.MONGO_URL;
-
-if (!mongoUrl) {
-  throw new Error("MongoDB URL is not defined in .env file");
-}
+import routes from "./routes/index";
+import cookieParser from "cookie-parser";
 
 mongoose
-  .connect(mongoUrl)
+  .connect("mongodb://localhost/gymAPI")
   .then(() => {
     console.log("Connected to MongoDB");
   })
@@ -22,10 +13,23 @@ mongoose
     console.error("Error connecting to MongoDB", error);
   });
 
+const app = express();
+
+const PORT = process.env.PORT || 3000;
+
+app.use(express.json());
+app.use(cookieParser());
+app.use(routes);
+
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello World with TypeScript!");
 });
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
+
+// Script to add exercises template of 48 different exercises
+/* Exercise.insertMany(exercises)
+  .then(() => console.log("Exercises added successfully!"))
+  .catch((err) => console.error("Failed to insert exercises: ", err)); */
