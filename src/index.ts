@@ -1,8 +1,13 @@
-import express, { Request, Response } from "express";
+import express, { Request, Response, response } from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import routes from "./routes/index";
 import cookieParser from "cookie-parser";
+import session from "express-session";
+import MongoStore from "connect-mongo";
+import passport from "passport";
+import "./strategies/localStrategy";
+import { createApp } from "./createApp";
 
 mongoose
   .connect("mongodb://localhost/gymAPI")
@@ -13,17 +18,9 @@ mongoose
     console.error("Error connecting to MongoDB", error);
   });
 
-const app = express();
+const app = createApp();
 
 const PORT = process.env.PORT || 3000;
-
-app.use(express.json());
-app.use(cookieParser());
-app.use(routes);
-
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World with TypeScript!");
-});
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
