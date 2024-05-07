@@ -18,7 +18,7 @@ router.post(
     data.password = hashPassword(data.password);
     const newUser = new User(data);
 
-    console.log(data);
+    console.log(newUser);
 
     try {
       const savedUser = await newUser.save();
