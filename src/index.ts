@@ -1,8 +1,9 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import mongoose from "mongoose";
 import "./strategies/discordStrategy";
 import { createApp } from "./createApp";
-
-require("dotenv").config();
 
 mongoose
   .connect("mongodb://localhost/gymAPI")

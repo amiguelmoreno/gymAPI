@@ -28,7 +28,7 @@ router.get(
   "/api/auth/discord/redirect",
   passport.authenticate("discord"),
   (req, res) => {
-    res.sendStatus(200);
+    res.redirect("/");
   }
 );
 

@@ -14,7 +14,7 @@ export function createApp() {
   app.use(cookieParser("helloworld"));
   app.use(
     session({
-      secret: "anson the dev",
+      secret: process.env.SESSION_SECRET || "",
       saveUninitialized: false,
       resave: false,
       cookie: {
