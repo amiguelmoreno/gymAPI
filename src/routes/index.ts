@@ -13,6 +13,6 @@ router.get("/", (req: Request, res: Response) => {
 router.use(usersRouter);
 router.use(exercisesRouter);
 router.use(routinesRouter);
-//router.use(authRouter);
+router.use(authRouter);
 
 export default router;

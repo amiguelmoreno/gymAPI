@@ -5,8 +5,8 @@ import session from "express-session";
 import passport from "passport";
 import MongoStore from "connect-mongo";
 import mongoose from "mongoose";
-import "./strategies/localStrategy";
-// import "./strategies/discord-strategy.mjs";
+//import "./strategies/localStrategy";
+import "./strategies/discordStrategy";
 
 export function createApp() {
   const app = express();

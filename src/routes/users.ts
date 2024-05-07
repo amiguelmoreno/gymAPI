@@ -1,10 +1,32 @@
 import { Request, Response, Router } from "express";
 import { User } from "../mongoose/schemas/user";
-import { checkSchema, matchedData, validationResult } from "express-validator";
+import {
+  query,
+  checkSchema,
+  matchedData,
+  validationResult,
+} from "express-validator";
 import { userValidationSchema } from "../utils/validationSchema";
 import { hashPassword } from "../utils/passwords";
 
 const router = Router();
+
+router.get("/users", async (req, res) => {
+  req.sessionStore.get(req.session.id, (err, sessionData) => {
+    if (err) {
+      throw err;
+    }
+
+    console.log(sessionData);
+  });
+
+  try {
+    const users = await User.find();
+    return res.send(users);
+  } catch (error) {
+    return res.sendStatus(400);
+  }
+});
 
 router.post(
   "/users",

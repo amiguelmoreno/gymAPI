@@ -19,8 +19,17 @@ router.post("/api/auth/logout", (request, response) => {
   if (!request.user) return response.sendStatus(401);
   request.logout((err) => {
     if (err) return response.sendStatus(400);
-    response.send(200);
+    response.sendStatus(200);
   });
 });
+
+router.get("/api/auth/discord", passport.authenticate("discord"));
+router.get(
+  "/api/auth/discord/redirect",
+  passport.authenticate("discord"),
+  (req, res) => {
+    res.sendStatus(200);
+  }
+);
 
 export default router;

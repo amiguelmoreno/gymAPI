@@ -2,8 +2,8 @@ POST http://localhost:3000/users HTTP/1.1
 Content-Type: application/json
 
 {
-   "displayName": "tera",
-   "username": "matttayy",
+   "displayName": "teratete",
+   "username": "matttayyeee",
    "password": "hello123"
 }
 
@@ -28,7 +28,7 @@ POST  http://localhost:3000/api/auth HTTP/1.1
 Content-Type: application/json
 
 {
-   "username": "matttayy",
+   "username": "matttayye",
    "password": "hello123"
 }
 

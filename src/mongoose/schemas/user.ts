@@ -11,6 +11,10 @@ const UserSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.String,
     required: true,
   },
+  _id: {
+    type: String,
+    default: () => new mongoose.Types.ObjectId().toString(),
+  },
 });
 
 export const User = mongoose.model("User", UserSchema);

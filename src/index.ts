@@ -2,6 +2,8 @@ import mongoose from "mongoose";
 import "./strategies/localStrategy";
 import { createApp } from "./createApp";
 
+require("dotenv").config();
+
 mongoose
   .connect("mongodb://localhost/gymAPI")
   .then(() => {
