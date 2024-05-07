@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import "./strategies/localStrategy";
+import "./strategies/discordStrategy";
 import { createApp } from "./createApp";
 
 require("dotenv").config();

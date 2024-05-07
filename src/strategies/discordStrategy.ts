@@ -3,6 +3,19 @@ import { Strategy } from "passport-discord";
 import { DiscordUser } from "../mongoose/schemas/discordUser";
 import { User } from "../mongoose/schemas/user";
 
+passport.serializeUser((user, done) => {
+  done(null, user._id);
+});
+
+passport.deserializeUser(async (id, done) => {
+  try {
+    const findUser = await DiscordUser.findById(id);
+    return findUser ? done(null, findUser) : done(null, null);
+  } catch (err) {
+    done(err, null);
+  }
+});
+
 export default passport.use(
   new Strategy(
     {
