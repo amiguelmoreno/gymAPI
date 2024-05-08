@@ -39,8 +39,6 @@ router.post(
         },
       ]);
 
-      console.log("Aggregation result:", exercises);
-
       const selectedExercises = exercises
         .reduce((acc, group) => acc.concat(group.exercises), [])
         .slice(0, exercisesNumber);

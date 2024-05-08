@@ -3,6 +3,7 @@ dotenv.config();
 
 import mongoose from "mongoose";
 import "./strategies/discordStrategy";
+import "./strategies/localStrategy";
 import { createApp } from "./createApp";
 
 mongoose

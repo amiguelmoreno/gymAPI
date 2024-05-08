@@ -47,5 +47,5 @@ export function validateRoutine(
       );
   }
 
-  next(); // Pass control to the next middleware function if validation passes
+  next();
 }

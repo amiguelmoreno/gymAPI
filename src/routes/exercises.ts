@@ -1,18 +1,23 @@
 import { Request, Response, Router } from "express";
 import { Exercise } from "../mongoose/schemas/exercise";
+import { userVerification } from "../middlewares/userVerification";
 
 const router = Router();
 
-router.get("/exercises", async (req: Request, res: Response) => {
-  try {
-    const exercises = await Exercise.find(); // Fetch all exercises
+router.get(
+  "/exercises",
+  userVerification,
+  async (req: Request, res: Response) => {
+    try {
+      const exercises = await Exercise.find(); // Fetch all exercises
 
-    res.json(exercises);
-  } catch (error) {
-    console.error("Failed to retrieve exercises:", error);
-    res.status(500).send("An error occurred while retrieving the exercises.");
+      res.json(exercises);
+    } catch (error) {
+      console.error("Failed to retrieve exercises:", error);
+      res.status(500).send("An error occurred while retrieving the exercises.");
+    }
   }
-});
+);
 
 router.get("/exercises/:name", async (req: Request, res: Response) => {
   const exerciseName = req.params.name.replace(/-/g, " "); // Replace hyphens with spaces to match the database entry
@@ -40,8 +45,6 @@ router.get(
       const exercises = await Exercise.find({
         muscleGroup: { $regex: `^${muscleGroup}$`, $options: "i" },
       });
-
-      console.log("exercies", exercises);
 
       if (exercises.length > 0) {
         res.json(exercises);

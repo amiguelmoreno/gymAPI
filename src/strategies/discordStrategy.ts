@@ -25,8 +25,6 @@ export default passport.use(
       scope: ["identify"],
     },
     async (accessToken, refreshToken, profile, done) => {
-      console.log(profile);
-
       let findUser;
       try {
         findUser = await DiscordUser.findOne({ discordId: profile.id });

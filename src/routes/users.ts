@@ -1,11 +1,6 @@
 import { Request, Response, Router } from "express";
 import { User } from "../mongoose/schemas/user";
-import {
-  query,
-  checkSchema,
-  matchedData,
-  validationResult,
-} from "express-validator";
+import { checkSchema, matchedData, validationResult } from "express-validator";
 import { userValidationSchema } from "../utils/validationSchema";
 import { hashPassword } from "../utils/passwords";
 
@@ -39,8 +34,6 @@ router.post(
     const data = matchedData(req);
     data.password = hashPassword(data.password);
     const newUser = new User(data);
-
-    console.log(newUser);
 
     try {
       const savedUser = await newUser.save();
